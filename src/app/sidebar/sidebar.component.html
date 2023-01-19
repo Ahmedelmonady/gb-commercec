@@ -1,1 +1,34 @@
-<p>sidebar works!</p>
+<div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: max-content; height: 100vh;">
+    <div class="align-items-center">
+        <a routerLink="/">
+          <img src="https://assets.website-files.com/61f138487dd58a6828fae08f/61fb9602b31df77c33e64bf0_gameball-logo-white.svg" style="width: 150px" loading="lazy" alt="">
+        </a>
+    </div>
+    <hr>
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="align-items-center">
+        <a class="nav-link text-white" aria-current="page" routerLink="/food" routerLinkActive="active">
+            <img class="me-3" src="https://img.icons8.com/pastel-glyph/64/ffffff/paper-bag--v2.png" alt="" width="32" height="32"/>
+          Food
+        </a>
+      </li>
+      <li class="align-items-center">
+        <a class="nav-link text-white" routerLink="/electronics" routerLinkActive="active">
+            <img class="me-3" src="https://img.icons8.com/external-bearicons-glyph-bearicons/64/ffffff/external-Headphones-audio-and-video-bearicons-glyph-bearicons-2.png" alt="" width="32" height="32"/>
+          Electronics
+        </a>
+      </li>
+    </ul>
+    <hr>
+    
+
+    <div class="row align-items-center" style="width: fit-content;">
+        <div class="col"> 
+            <img src="https://github.com/mdo.png" alt="" width="42" height="42" class="rounded-circle"> </div>
+    <div class="col">
+        <div class="row"><a>Ahmed El Monady</a></div>
+        <div class="row"><a>ahmed_elmonady@hotmail.com</a></div>
+    </div>
+    <div class="col"><img (click)="logout()" src="https://img.icons8.com/ios/50/ffffff/exit--v1.png" alt="Log out" width="20" height="20" style="cursor: pointer"/></div>
+</div>
+  </div>
