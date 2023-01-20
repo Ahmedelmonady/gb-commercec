@@ -7,7 +7,7 @@ import { GetCategoryProductsDto } from '../_models/get-category-products-dto';
 })
 export class ProductsService {
 
-  baseUrl = "https://localhost:7203/api/Products/"
+  private baseUrl = "https://api.monady.tk/Products/"
 
   constructor(private httpClient: HttpClient) { }
 

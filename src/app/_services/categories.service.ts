@@ -8,7 +8,7 @@ import { NewCategoryDto } from '../_models/new-category-dto';
 })
 export class CategoriesService {
 
-  baseUrl = "https://localhost:7203/api/Categories/"
+  private baseUrl = "https://api.monady.tk/Categories/"
 
   constructor(private httpClient: HttpClient) { }
 
