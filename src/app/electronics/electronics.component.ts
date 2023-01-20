@@ -12,6 +12,10 @@ export class ElectronicsComponent implements OnInit {
   
   electronics: any;
 
+  isEmpty: boolean = true;
+
+  emptyErrorMessage: any;
+
   constructor(private productsService: ProductsService, private toastr: ToastrService) {}
   
   ngOnInit(): void {
@@ -28,8 +32,13 @@ export class ElectronicsComponent implements OnInit {
       next: resp => {
         this.electronics = resp;
         console.log(resp);
+        this.isEmpty = false;
       },
-      error: err => console.log(err),
+      error: err => {
+        console.log(err);
+        this.isEmpty = true;
+        if(err.status == 400) this.emptyErrorMessage = err.error;
+      },
     })
   }
 
