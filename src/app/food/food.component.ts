@@ -16,17 +16,31 @@ export class FoodComponent implements OnInit {
 
   emptyErrorMessage: any;
 
+  clickedBtn: string = "fruits";
+
+  switchClick = true;
+
+  foodDto: GetCategoryProductsDto = {
+    categoryname: "Fruits",
+    sortorder: "None"
+  };
+
   constructor(private productsService: ProductsService, private toastr: ToastrService) {}
   
   ngOnInit(): void {
-    
-    var foodDto: GetCategoryProductsDto = {
-      categoryname: "Fruits",
-      sortorder: "None"
-    };
+    var data = this.foodDto
+    this.getAllFood(data);
 
-    this.getAllFood(foodDto);
+  }
 
+  getFoodList(categoryName: string, clickName: string){
+    if(this.clickedBtn !== clickName){
+      this.clickedBtn = clickName;
+      this.foodDto.categoryname = categoryName;
+      this.foodDto.sortorder = "None";
+      this.switchClick = !this.switchClick;
+      this.getAllFood(this.foodDto);
+    }
   }
 
   getAllFood(foodDto: GetCategoryProductsDto){
@@ -46,6 +60,11 @@ export class FoodComponent implements OnInit {
 
   buy(item: any){
     this.toastr.success(`Purchased ${item.name} for $${item.price}`);
+  }
+
+  sortOrder(sortOrder: string){
+    this.foodDto.sortorder = sortOrder;
+    this.getAllFood(this.foodDto);
   }
 
 }
