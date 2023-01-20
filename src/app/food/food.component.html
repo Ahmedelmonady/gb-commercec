@@ -1,4 +1,4 @@
-<div class="container-md d-flex flex-column flex-shrink-0" style="overflow-y: scroll; height:100% ;">
+<div class="container-md d-flex flex-column flex-shrink-0" style="overflow-y: scroll; height:100%;">
     <div class="row m-3">
         <div class="col">
             <h2>Food</h2>
@@ -6,25 +6,35 @@
         </div>
     </div>
 
-    <div class=" row m-3 container-fluid">
-        
-            <div class="btn-group col-2">
-                <button type="button" class="btn" [ngClass]="{'btn-warning': switchClick, 'btn-outline-dark':!switchClick}"  (click)="getFoodList('Fruits', 'fruits')">Fruits</button>
-                <button type="button" class="btn" [ngClass]="{'btn-warning': !switchClick, 'btn-outline-dark':switchClick}"  (click)="getFoodList('Vegetables', 'vegetables')">Vegetables</button>
-              </div>
-              <div class="col-9"></div>
-            <div class="col-1">
-                <button class="btn btn-dark" type="button" (click)="sortOrder('HighToLow')">Sort</button>
+    <div class="row m-3">
+        <div class="btn-group col-2">
+            <button type="button" class="btn" [ngClass]="{'btn-warning': switchClick, 'btn-outline-dark':!switchClick}"
+                (click)="getFoodList('Fruits', 'fruits')">Fruits</button>
+            <button type="button" class="btn" [ngClass]="{'btn-warning': !switchClick, 'btn-outline-dark':switchClick}"
+                (click)="getFoodList('Vegetables', 'vegetables')">Vegetables</button>
+        </div>
+        <div class="col-8 me-4"></div>
+        <div class="col-1 ms-4">
+            <div class="row dropdown" dropdown>
+                <button class="btn btn-dark" type="button" dropdownToggle> <img
+                        src="https://img.icons8.com/pastel-glyph/64/ffffff/sorting-arrows--v1.png" width="32"
+                        height="32" />
+                    Sort </button>
+                <div class="dropdown-menu mt-1" *dropdownMenu>
+                    <div *ngFor="let order of sortingOrder">
+                        <a class="dropdown-item" (click)="sortOrder(order)">{{order}}</a>
+                    </div>
+                </div>
             </div>
-        
+        </div>
     </div>
 
     <div class="m-3" *ngIf="!isEmpty">
-        <div class="row mt-3 me-3 ms-3"  *ngFor="let f of food">
-        <div class="col-6 themed-grid-col">{{f.name}}</div>
-        <div class=" col-6 themed-grid-col text-center" >
-            <div class="row">
-                <div class="col-10" style="color: darkgreen;">${{f.price}}</div>
+        <div class="row mt-3 me-3 ms-3" *ngFor="let f of food">
+            <div class="col-6 themed-grid-col">{{f.name}}</div>
+            <div class=" col-6 themed-grid-col text-center">
+                <div class="row">
+                    <div class="col-10" style="color: darkgreen;">${{f.price}}</div>
                     <button class="col-2 btn btn-dark btn-sm ml-2" type="button" (click)="buy(f)">Buy</button>
                 </div>
             </div>
@@ -32,7 +42,7 @@
         </div>
     </div>
 
-      <div class="m-5" *ngIf="!isEmpty">Paging</div>
+    <div class="m-5" *ngIf="!isEmpty">Paging</div>
 
-      <div class="m-5" *ngIf="isEmpty">{{emptyErrorMessage}}</div>
+    <div class="m-5" *ngIf="isEmpty">{{emptyErrorMessage}}</div>
 </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { GetCategoryProductsDto } from '../_models/get-category-products-dto';
+import { SortOrder } from '../_models/sort-order-enum';
 import { ProductsService } from '../_services/products.service';
 
 @Component({
@@ -20,6 +21,13 @@ export class FoodComponent implements OnInit {
 
   switchClick = true;
 
+  sortingOrder = [
+    SortOrder.Ascending,
+    SortOrder.Descending,
+    SortOrder.LowToHigh,
+    SortOrder.HighToLow,
+  ];
+
   foodDto: GetCategoryProductsDto = {
     categoryname: "Fruits",
     sortorder: "None"
@@ -31,6 +39,7 @@ export class FoodComponent implements OnInit {
     var data = this.foodDto
     this.getAllFood(data);
 
+    console.log(this.sortingOrder[0]);
   }
 
   getFoodList(categoryName: string, clickName: string){
